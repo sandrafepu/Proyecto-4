@@ -15,3 +15,5 @@ Este proyecto muestra cómo leer datos de un archivo JSON y devolverlos como res
        "ciudad": "Madrid"
    }
 2. **Verifica su correcta salida por la terminal**
+
+3. **Añade comprobaciones en tu código para manejar errores**
