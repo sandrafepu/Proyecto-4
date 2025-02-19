@@ -1,25 +1,30 @@
 <?php
 header('Content-Type: application/json');
 
-// Comprobaciones
+// Comprobar si el archivo existe
 if (!file_exists("datos.json")) {
     echo json_encode(["error" => "El archivo datos.json no existe."]);
     exit;
 }
 
-$datos_json = file_get_contents("datos.json");
+// Leer el contenido del archivo
+$datos = file_get_contents("datos.json");
 
-if (empty($datos)) {
+// Comprobar si el archivo está vacío
+if (empty("$datos")) {
     echo json_encode(["error" => "El archivo datos.json esta vacio."]);
     exit;
 }
 
-$datos_json = json_decode($datos,true);
+// Intentar decodificar el JSON
+$datos_json = json_decode($datos, true);
 
+// Comprobar si el JSON es válido
 if (json_last_error() !== JSON_ERROR_NONE) {
-    echo json_encode(["error" => "El archivo datos.json contiene un json invalido."]);
+    echo json_encode(["error" => "El archivo datos.json contiene un JSON invalido."]);
     exit;
 }
 
+// Si todo está bien, devolver los datos
 echo json_encode($datos_json);
 ?>
